@@ -1,6 +1,36 @@
 from tkinter import *
 
 
+def defineRoot():
+    root.geometry("400x360")
+    root.configure(padx=25, pady=25)
+    root.resizable(False, False)  # disables resizing of window
+    root.configure(bg="#fff")
+    root.title(appTitle)
+    photo = PhotoImage(file="Icons/1.png")
+    root.iconphoto(False, photo)
+    windowPosition(root)
+
+
+def defineNumberLabel():
+    global labelText
+    global numberLabel
+    labelText = StringVar(root)
+    numberLabel = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
+    numberLabel.configure(anchor=W, pady=25)
+    labelText.set(welcomeText)
+    numberLabel.grid(row=0, column=0, columnspan=3, rowspan=3,
+                     sticky=W)  # the sticky attribute sets the text to the left side of label
+
+
+def defineOperatorLabel():
+    global operatorDisplay
+    operatorDisplay = StringVar(root)
+    operatorLabel = Label(root, textvariable=operatorDisplay, bg="#fff", font=('Helvetica', 14))
+    operatorLabel.configure(anchor=E)
+    operatorLabel.grid(row=0, column=4, rowspan=3, sticky=E)
+
+
 def windowPosition(name):  # positions window to the center of the screen
     name.update_idletasks()
     width = name.winfo_width()
@@ -67,9 +97,9 @@ def createAndAllignFunctionButtons():
 
 
 def numClick(n):
-    if len(str(label['text'])) < 11 or label['text'] == welcomeText:  # checks for overflow
+    if len(str(numberLabel['text'])) < 11 or numberLabel['text'] == welcomeText:  # checks for overflow
         if isOperatorClicked == 0:  # checks wether operators have been clicked
-            if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
+            if numberLabel['text'] == welcomeText or numberLabel['text'] == "0":  # checks the text in label
                 labelText.set(str(n))
             else:
                 labelText.set(labelText.get() + str(n))
@@ -83,13 +113,13 @@ def numClick(n):
 
 
 def operator(op):
-    if label['text'] == welcomeText:
-        errormsg("Enter message first")
+    if numberLabel['text'] == welcomeText or labelText.get()=='':
+        errormsg("Enter number first")
     else:
         global isOperatorClicked
         isOperatorClicked = 1
         global n1
-        n1 = float(label['text'])
+        n1 = float(numberLabel['text'])
         labelText.set(0)
         global opt
         opt = op
@@ -104,12 +134,12 @@ def operator(op):
 
 
 def equals():
-    if label['text'] == welcomeText:
+    if numberLabel['text'] == welcomeText:
         errormsg("Invalid Operation")
     else:
         isOperatorClicked = 0
         global n2
-        n2 = float(label['text'])
+        n2 = float(numberLabel['text'])
         if opt == 0:
             res = n1 + n2
         elif opt == 1:
@@ -145,7 +175,7 @@ def errormsg(message):
 
 def otherFunctions(choice):
     if choice == 1:  # delete button
-        if len(labelText.get()) > 0:
+        if len(labelText.get()) > 0 and labelText.get()!=welcomeText:
             labelText.set(labelText.get()[:-1])
         else:
             errormsg("Nothing to delete")
@@ -168,29 +198,15 @@ def otherFunctions(choice):
 
     return
 
-
+#<<<===Initializations===>>>
 welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
+#<<<===main===>>>
 root = Tk()
-root.geometry("400x360")
-root.configure(padx=25, pady=25)
-root.resizable(False, False)  # disables resizing of window
-root.configure(bg="#fff")
-photo = PhotoImage(file="Icons/1.png")
-root.iconphoto(False, photo)
-windowPosition(root)
-labelText = StringVar(root)
-operatorDisplay = StringVar(root)
-root.title(appTitle)
-label = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
-label.configure(anchor=W, pady=25)
-labelText.set(welcomeText)
-label.grid(row=0, column=0, columnspan=3, rowspan=3,
-           sticky=W)  # the sticky attribute sets the text to the left side of label
-operatorLabel = Label(root, textvariable=operatorDisplay, bg="#fff", font=('Helvetica', 14))
-operatorLabel.configure(anchor=E)
-operatorLabel.grid(row=0, column=4, rowspan=3, sticky=E)
+defineRoot()
+defineNumberLabel()
+defineOperatorLabel()
 createAndAllignNumButtons()
 createAndAllignOperatorButtons()
 createAndAllignFunctionButtons()

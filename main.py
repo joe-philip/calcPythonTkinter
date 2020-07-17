@@ -1,5 +1,4 @@
 from tkinter import *
-from _tkinter import *
 
 
 def windowPosition(name):  # positions window to the center of the screen
@@ -12,32 +11,33 @@ def windowPosition(name):  # positions window to the center of the screen
 
 
 def createAndAllignNumButtons():
-    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0).grid(row=6, column=0)
-    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0).grid(row=6, column=1)
-    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0).grid(row=6, column=2)
-    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0).grid(row=5, column=0)
-    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0).grid(row=5, column=1)
-    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0).grid(row=5, column=2)
-    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0).grid(row=4, column=0)
-    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0).grid(row=4, column=1)
-    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0).grid(row=4, column=2)
-    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0).grid(row=7, column=1)
+    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0).grid(row=6, column=0, padx=25)
+    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0).grid(row=6, column=1, padx=25)
+    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0).grid(row=6, column=2, padx=25)
+    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0).grid(row=5, column=0, padx=25)
+    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0).grid(row=5, column=1, padx=25)
+    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0).grid(row=5, column=2, padx=25)
+    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0).grid(row=4, column=0, padx=25)
+    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0).grid(row=4, column=1, padx=25)
+    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0).grid(row=4, column=2, padx=25)
+    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0).grid(row=7, column=1, padx=25)
     # the value of the button clicked is passed onto a single function as argument
 
 
 def createAndAllignOperatorButtons():
-    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0).grid(row=6, column=3)
-    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0).grid(row=5, column=3)
-    buttonDivide = Button(root, text="/", command=lambda: operator(2), bg="#fff", border=0).grid(row=4, column=3)
-    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0).grid(row=7, column=3)
+    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0).grid(row=6, column=3, pady=2)
+    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0).grid(row=5, column=3, pady=2)
+    buttonDivide = Button(root, text="/", command=lambda: operator(2), bg="#fff", border=0).grid(row=4, column=3,
+                                                                                                 pady=2)
+    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0).grid(row=7, column=3,
+                                                                                                   pady=2)
 
 
 def createAndAllignFunctionButtons():
     clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0).grid(row=8, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0).grid(row=7, column=2)
-    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0).grid(row=8,
-                                                                                                                 column=1)
-    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0).grid(row=7, column=0)
+    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0).grid(row=8, column=1, pady=2)
+    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0).grid(row=7, column=0,pady=2)
 
 
 def numClick(n):
@@ -116,11 +116,13 @@ def otherFunctions(choice):
         labelText.set(welcomeText)
         res = 0
         opt = 0
-    elif choice==3:
-        if labelText.get()==welcomeText or labelText.get()=="0":
+        global isOperatorClicked
+        isOperatorClicked = 0
+    elif choice == 3:
+        if labelText.get() == welcomeText or labelText.get() == "0":
             labelText.set("0.")
         else:
-            labelText.set((labelText.get())+".")
+            labelText.set((labelText.get()) + ".")
 
     return
 
@@ -129,13 +131,14 @@ welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
 root = Tk()
-root.geometry("300x300")
+root.geometry("400x280")
+root.configure(padx=25, pady=25)
 windowPosition(root)
 labelText = StringVar(root)
 root.title(appTitle)
 root.configure(bg="#fff")
 label = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
-label.configure(anchor=W)
+label.configure(anchor=W, pady=25)
 labelText.set(welcomeText)
 label.grid(row=0, column=0, columnspan=4, rowspan=3)
 createAndAllignNumButtons()

@@ -111,7 +111,7 @@ def errormsg(message):
     error = Tk()
     error.title("Error")
     error.configure(bg="#fff")
-    error.resizable(False,False)
+    error.resizable(False, False)
     windowPosition(error)
     errorLabel = Label(error, text=message, bg="#fff")
     errorLabel.pack()
@@ -135,10 +135,13 @@ def otherFunctions(choice):
         isOperatorClicked = 0
         operatorDisplay.set("")
     elif choice == 3:  # dot button
-        if labelText.get() == welcomeText or labelText.get() == "0" or labelText.get()=="0.":
-            labelText.set("0.")
+        if labelText.get().find('.') == -1:  # checks wether dot is already present in the number
+            if labelText.get() == welcomeText or labelText.get() == "0" or labelText.get() == "0.":
+                labelText.set("0.")
+            else:
+                labelText.set((labelText.get()) + ".")
         else:
-            labelText.set((labelText.get()) + ".")
+            errormsg("Invalid choice")
 
     return
 
@@ -149,7 +152,7 @@ isOperatorClicked = 0
 root = Tk()
 root.geometry("380x280")
 root.configure(padx=25, pady=25)
-root.resizable(False, False)#disables resizing of window
+root.resizable(False, False)  # disables resizing of window
 windowPosition(root)
 labelText = StringVar(root)
 operatorDisplay = StringVar(root)

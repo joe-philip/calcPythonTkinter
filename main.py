@@ -146,8 +146,9 @@ welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
 root = Tk()
-root.geometry("600x280")
+root.geometry("380x280")
 root.configure(padx=25, pady=25)
+root.resizable(False, False)
 windowPosition(root)
 labelText = StringVar(root)
 operatorDisplay = StringVar(root)

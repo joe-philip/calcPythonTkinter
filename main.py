@@ -41,16 +41,19 @@ def createAndAllignFunctionButtons():
 
 
 def numClick(n):
-    if isOperatorClicked == 0:  # checks wether operators have been clicked
-        if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
-            labelText.set(str(n))
+    if len(label['text'])<11 or label['text']==welcomeText:
+        if isOperatorClicked == 0:  # checks wether operators have been clicked
+            if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
+                labelText.set(str(n))
+            else:
+                labelText.set(labelText.get() + str(n))
         else:
-            labelText.set(labelText.get() + str(n))
+            if labelText.get() == "0":
+                labelText.set(str(n))
+            else:
+                labelText.set(labelText.get() + str(n))
     else:
-        if labelText.get() == "0":
-            labelText.set(str(n))
-        else:
-            labelText.set(labelText.get() + str(n))
+        errormsg("Enter less than 10 numbers")
 
 
 def operator(op):

@@ -36,12 +36,15 @@ def createAndAllignOperatorButtons():
 def createAndAllignFunctionButtons():
     clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0).grid(row=8, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0).grid(row=7, column=2)
-    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0).grid(row=8, column=1, pady=2)
-    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0).grid(row=7, column=0,pady=2)
+    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0).grid(row=8,
+                                                                                                                 column=1,
+                                                                                                                 pady=2)
+    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0).grid(row=7, column=0,
+                                                                                                    pady=2)
 
 
 def numClick(n):
-    if len(label['text'])<11 or label['text']==welcomeText:
+    if len(str(label['text'])) < 11 or label['text'] == welcomeText:
         if isOperatorClicked == 0:  # checks wether operators have been clicked
             if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
                 labelText.set(str(n))

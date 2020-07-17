@@ -11,36 +11,31 @@ def windowPosition(name):  # positions window to the center of the screen
 
 
 def createAndAllignNumButtons():
-    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0).grid(row=6, column=0, padx=25)
-    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0).grid(row=6, column=1, padx=25)
-    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0).grid(row=6, column=2, padx=25)
-    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0).grid(row=5, column=0, padx=25)
-    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0).grid(row=5, column=1, padx=25)
-    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0).grid(row=5, column=2, padx=25)
-    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0).grid(row=4, column=0, padx=25)
-    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0).grid(row=4, column=1, padx=25)
-    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0).grid(row=4, column=2, padx=25)
-    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0).grid(row=7, column=1, padx=25)
+    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0, width=3, height=2).grid(row=6, column=0, padx=25)
+    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0, width=3, height=2).grid(row=6, column=1, padx=25)
+    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0, width=3, height=2).grid(row=6, column=2, padx=25)
+    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0, width=3, height=2).grid(row=5, column=0, padx=25)
+    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0, width=3, height=2).grid(row=5, column=1, padx=25)
+    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0, width=3, height=2).grid(row=5, column=2, padx=25)
+    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0, width=3, height=2).grid(row=4, column=0, padx=25)
+    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0, width=3, height=2).grid(row=4, column=1, padx=25)
+    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0, width=3, height=2).grid(row=4, column=2, padx=25)
+    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0, width=3, height=2).grid(row=7, column=1, padx=25)
     # the value of the button clicked is passed onto a single function as argument
 
 
 def createAndAllignOperatorButtons():
-    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0).grid(row=6, column=3, pady=2)
-    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0).grid(row=5, column=3, pady=2)
-    buttonDivide = Button(root, text="/", command=lambda: operator(2), bg="#fff", border=0).grid(row=4, column=3,
-                                                                                                 pady=2)
-    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0).grid(row=7, column=3,
-                                                                                                   pady=2)
+    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0, width=3, height=2).grid(row=6, column=3, pady=2)
+    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2).grid(row=5, column=3, pady=2)
+    buttonDivide = Button(root, text="/", command=lambda: operator(2), bg="#fff", border=0, width=3, height=2).grid(row=4, column=3, pady=2)
+    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2).grid(row=7, column=3, pady=2)
 
 
 def createAndAllignFunctionButtons():
-    clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0).grid(row=8, column=0)
-    equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0).grid(row=7, column=2)
-    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0).grid(row=8,
-                                                                                                                 column=1,
-                                                                                                                 pady=2)
-    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0).grid(row=7, column=0,
-                                                                                                    pady=2)
+    clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0, width=3, height=2).grid(row=8, column=0)
+    equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2).grid(row=7, column=2)
+    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0, width=5, height=2).grid(row=8, column=1, pady=2)
+    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0, width=3, height=2).grid(row=7, column=0, pady=2)
 
 
 def numClick(n):
@@ -150,7 +145,7 @@ welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
 root = Tk()
-root.geometry("380x280")
+root.geometry("380x360")
 root.configure(padx=25, pady=25)
 root.resizable(False, False)  # disables resizing of window
 windowPosition(root)
@@ -161,10 +156,10 @@ root.configure(bg="#fff")
 label = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
 label.configure(anchor=W, pady=25)
 labelText.set(welcomeText)
-label.grid(row=0, column=0, columnspan=3, rowspan=3)
+label.grid(row=0, column=0, columnspan=3, rowspan=3, sticky=W)#the sticky attribute sets the text to the left side of label
 operatorLabel = Label(root, textvariable=operatorDisplay, bg="#fff", font=('Helvetica', 14))
 operatorLabel.configure(anchor=E)
-operatorLabel.grid(row=0, column=4, rowspan=3)
+operatorLabel.grid(row=0, column=4, rowspan=3, sticky=E)
 createAndAllignNumButtons()
 createAndAllignOperatorButtons()
 createAndAllignFunctionButtons()

@@ -25,16 +25,17 @@ def createAndAllignOperatorButtons():
 def createAndAllignFunctionButtons():
     clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff").grid(row=7, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff").grid(row=7, column=2)
+    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff").grid(row=8, column=0)
 
 
 def numClick(n):
     if isOperatorClicked == 0:  # checks wether operators have been clicked
-        if label['text'] == welcomeText:  # checks the text in label
+        if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
             labelText.set(str(n))
         else:
             labelText.set(labelText.get() + str(n))
     else:
-        if label['text'] == 0:
+        if labelText.get() == "0":
             labelText.set(str(n))
         else:
             labelText.set(labelText.get() + str(n))
@@ -60,14 +61,16 @@ def equals():
         isOperatorClicked = 0
         global n2
         n2 = float(label['text'])
-        if (opt == 0):
+        if opt == 0:
             res = n1 + n2
-        elif (opt == 1):
+        elif opt == 1:
             res = n1 - n2
-        elif (opt == 2):
+        elif opt == 2:
             if n2 == 0:
                 errormsg("Division by zero not possible")
-        elif (opt == 3):
+            else:
+                res = n1 / n2
+        elif opt == 3:
             res = n1 * n2
         if res % 1 == 0:
             labelText.set(str(int(res)))
@@ -76,13 +79,29 @@ def equals():
 
 
 def errormsg(message):
+    def exit():
+        error.destroy()
+
     error = Tk()
     errorLabel = Label(error, text=message)
     errorLabel.pack()
+    okButton = Button(error, text="OK", command=exit, bg="#007aff", fg="#fff", border=0)
+    okButton.pack()
     error.mainloop()
 
 
 def otherFunctions(choice):
+    if choice == 1:  # delete button
+        if len(labelText.get()) > 0:
+            labelText.set(labelText.get()[:-1])
+        else:
+            errormsg("Nothing to delete")
+    elif choice == 2:
+        n1 = n2 = 0
+        labelText.set(welcomeText)
+        res = 0
+        opt = 0
+
     return
 
 
@@ -93,7 +112,9 @@ root = Tk()
 labelText = StringVar(root)
 root.title(appTitle)
 root.configure(bg="#fff")
-label = Label(root, textvariable=labelText)
+root.geometry("250x250")
+label = Label(root, textvariable=labelText, bg="#fff")
+label.configure(anchor=W)
 labelText.set(welcomeText)
 label.grid(row=0, column=0, columnspan=4, rowspan=3)
 createAndAllignNumButtons()

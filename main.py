@@ -1,6 +1,15 @@
 from tkinter import *
 
 
+def windowPosition(name):  # positions window to the center of the screen
+    name.update_idletasks()
+    width = name.winfo_width()
+    height = name.winfo_height()
+    x = (name.winfo_screenwidth() // 2) - (width // 2)
+    y = (name.winfo_screenheight() // 2) - (height // 2)
+    name.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+
 def createAndAllignNumButtons():
     button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff").grid(row=6, column=0)
     button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff").grid(row=6, column=1)
@@ -109,10 +118,10 @@ welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
 root = Tk()
+windowPosition(root)
 labelText = StringVar(root)
 root.title(appTitle)
 root.configure(bg="#fff")
-root.geometry("250x250")
 label = Label(root, textvariable=labelText, bg="#fff")
 label.configure(anchor=W)
 labelText.set(welcomeText)

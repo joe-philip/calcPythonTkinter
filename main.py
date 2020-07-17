@@ -44,7 +44,7 @@ def createAndAllignFunctionButtons():
 
 
 def numClick(n):
-    if len(str(label['text'])) < 11 or label['text'] == welcomeText:
+    if len(str(label['text'])) < 11 or label['text'] == welcomeText:  # checks for overflow
         if isOperatorClicked == 0:  # checks wether operators have been clicked
             if label['text'] == welcomeText or label['text'] == "0":  # checks the text in label
                 labelText.set(str(n))
@@ -70,6 +70,14 @@ def operator(op):
         labelText.set(0)
         global opt
         opt = op
+        if op == 0:
+            operatorDisplay.set("+")
+        elif op == 1:
+            operatorDisplay.set("-")
+        elif op == 2:
+            operatorDisplay.set("/")
+        elif op == 3:
+            operatorDisplay.set("x")
 
 
 def equals():
@@ -117,14 +125,15 @@ def otherFunctions(choice):
             labelText.set(labelText.get()[:-1])
         else:
             errormsg("Nothing to delete")
-    elif choice == 2:
+    elif choice == 2:  # clear all
         n1 = n2 = 0
         labelText.set(welcomeText)
         res = 0
         opt = 0
         global isOperatorClicked
         isOperatorClicked = 0
-    elif choice == 3:
+        operatorDisplay.set("")
+    elif choice == 3:  # dot button
         if labelText.get() == welcomeText or labelText.get() == "0":
             labelText.set("0.")
         else:
@@ -137,16 +146,20 @@ welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
 root = Tk()
-root.geometry("400x280")
+root.geometry("600x280")
 root.configure(padx=25, pady=25)
 windowPosition(root)
 labelText = StringVar(root)
+operatorDisplay = StringVar(root)
 root.title(appTitle)
 root.configure(bg="#fff")
 label = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
 label.configure(anchor=W, pady=25)
 labelText.set(welcomeText)
-label.grid(row=0, column=0, columnspan=4, rowspan=3)
+label.grid(row=0, column=0, columnspan=3, rowspan=3)
+operatorLabel = Label(root, textvariable=operatorDisplay, bg="#fff", font=('Helvetica', 14))
+operatorLabel.configure(anchor=E)
+operatorLabel.grid(row=0, column=4, rowspan=3)
 createAndAllignNumButtons()
 createAndAllignOperatorButtons()
 createAndAllignFunctionButtons()

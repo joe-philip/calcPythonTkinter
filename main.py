@@ -80,7 +80,8 @@ def createAndAllignOperatorButtons():
                                                                                                                   pady=2)
     buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2).grid(
         row=5, column=3, pady=2)
-    buttonDivide = Button(root, text=chr(247), command=lambda: operator(2), bg="#fff", border=0, width=3, height=2).grid(
+    buttonDivide = Button(root, text=chr(247), command=lambda: operator(2), bg="#fff", border=0, width=3,
+                          height=2).grid(
         row=4, column=3, pady=2)
     buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2).grid(
         row=7, column=3, pady=2)
@@ -113,7 +114,7 @@ def numClick(n):
 
 
 def operator(op):
-    if numberLabel['text'] == welcomeText or labelText.get()=='':
+    if numberLabel['text'] == welcomeText or labelText.get() == '':
         errormsg("Enter number first")
     else:
         global isOperatorClicked
@@ -158,9 +159,6 @@ def equals():
 
 
 def errormsg(message):
-    def exit():
-        error.destroy()
-
     error = Tk()
     error.geometry("200x80")
     error.title("Error")
@@ -169,14 +167,15 @@ def errormsg(message):
     windowPosition(error)
     errorLabel = Label(error, text=message, bg="#fff")
     errorLabel.pack(pady=10)
-    okButton = Button(error, text="OK", command=exit, bg="#007aff", fg="#fff", border=0)
+    okButton = Button(error, text="OK", command=lambda: error.destroy(), bg="#007aff", fg="#fff", border=0)
+    # the destroy() is a built in function it exits the window
     okButton.pack()
     error.mainloop()
 
 
 def otherFunctions(choice):
     if choice == 1:  # delete button
-        if len(labelText.get()) > 0 and labelText.get()!=welcomeText:
+        if len(labelText.get()) > 0 and labelText.get() != welcomeText:
             labelText.set(labelText.get()[:-1])
         else:
             errormsg("Nothing to delete")
@@ -199,11 +198,12 @@ def otherFunctions(choice):
 
     return
 
-#<<<===Initializations===>>>
+
+# <<<===Initializations===>>>
 welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
-#<<<===main===>>>
+# <<<===main===>>>
 root = Tk()
 defineRoot()
 defineNumberLabel()

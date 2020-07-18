@@ -2,11 +2,84 @@ from tkinter import *
 
 
 def defineRoot():
+    def listner(event):
+        if event.char == "1":
+            numClick(1)
+        elif event.char == "2":
+            numClick(2)
+        elif event.char == "3":
+            numClick(3)
+        elif event.char == "4":
+            numClick(4)
+        elif event.char == "5":
+            numClick(5)
+        elif event.char == "6":
+            numClick(6)
+        elif event.char == "7":
+            numClick(7)
+        elif event.char == "8":
+            numClick(8)
+        elif event.char == "9":
+            numClick(9)
+        elif event.char == "0":
+            numClick(0)
+        elif event.char == ".":
+            otherFunctions(3)
+        elif event.char == "+":
+            operator(0)
+        elif event.char == '-':
+            operator(1)
+        elif event.char == '*':
+            operator(3)
+        elif event.char == '/':
+            operator(2)
+        elif event.char == '\r':
+            equals()
+        elif event.char == '\x08':
+            otherFunctions(1)
+        elif event.char == '\x7f':
+            otherFunctions(2)
+
     root.geometry("400x360")
     root.configure(padx=25, pady=25)
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
     root.title(appTitle)
+    root.bind("<KP_1>", listner)
+    root.bind("1", listner)
+    root.bind("<KP_2>", listner)
+    root.bind("2", listner)
+    root.bind("<KP_3>", listner)
+    root.bind("3", listner)
+    root.bind("<KP_4>", listner)
+    root.bind("4", listner)
+    root.bind("<KP_5>", listner)
+    root.bind("5", listner)
+    root.bind("<KP_6>", listner)
+    root.bind("6", listner)
+    root.bind("<KP_7>", listner)
+    root.bind("7", listner)
+    root.bind("<KP_8>", listner)
+    root.bind("8", listner)
+    root.bind("<KP_9>", listner)
+    root.bind("9", listner)
+    root.bind("<KP_0>", listner)
+    root.bind("0", listner)
+    root.bind("<KP_Decimal>", listner)
+    root.bind("<period>", listner)
+    root.bind("<KP_Add>", listner)
+    root.bind("<plus>", listner)
+    root.bind("<KP_Subtract>", listner)
+    root.bind("<minus>", listner)
+    root.bind("<KP_Multiply>", listner)
+    root.bind("<asterisk>", listner)
+    root.bind("<KP_Divide>", listner)
+    root.bind("<slash>", listner)
+    root.bind("<KP_Enter>", listner)
+    root.bind("<Return>", listner)
+    root.bind("<Delete>", listner)
+    root.bind("<BackSpace>", listner)
+
     photo = PhotoImage(file="Icons/2.png")
     root.iconphoto(False, photo)
     windowPosition(root)
@@ -41,36 +114,26 @@ def windowPosition(name):  # positions window to the center of the screen
 
 
 def createAndAllignNumButtons():
-    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0, width=3, height=2).grid(row=6,
-                                                                                                               column=0,
-                                                                                                               padx=25)
-    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0, width=3, height=2).grid(row=6,
-                                                                                                               column=1,
-                                                                                                               padx=25)
-    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0, width=3, height=2).grid(row=6,
-                                                                                                               column=2,
-                                                                                                               padx=25)
-    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0, width=3, height=2).grid(row=5,
-                                                                                                               column=0,
-                                                                                                               padx=25)
-    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0, width=3, height=2).grid(row=5,
-                                                                                                               column=1,
-                                                                                                               padx=25)
-    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0, width=3, height=2).grid(row=5,
-                                                                                                               column=2,
-                                                                                                               padx=25)
-    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0, width=3, height=2).grid(row=4,
-                                                                                                               column=0,
-                                                                                                               padx=25)
-    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0, width=3, height=2).grid(row=4,
-                                                                                                               column=1,
-                                                                                                               padx=25)
-    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0, width=3, height=2).grid(row=4,
-                                                                                                               column=2,
-                                                                                                               padx=25)
-    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0, width=3, height=2).grid(row=7,
-                                                                                                               column=1,
-                                                                                                               padx=25)
+    button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0, width=3, height=2)
+    button1.grid(row=6, column=0, padx=25)
+    button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0, width=3, height=2)
+    button2.grid(row=6, column=1, padx=25)
+    button3 = Button(root, text="3", command=lambda: numClick(3), bg="#fff", border=0, width=3, height=2)
+    button3.grid(row=6, column=2, padx=25)
+    button4 = Button(root, text="4", command=lambda: numClick(4), bg="#fff", border=0, width=3, height=2)
+    button4.grid(row=5, column=0, padx=25)
+    button5 = Button(root, text="5", command=lambda: numClick(5), bg="#fff", border=0, width=3, height=2)
+    button5.grid(row=5, column=1, padx=25)
+    button6 = Button(root, text="6", command=lambda: numClick(6), bg="#fff", border=0, width=3, height=2)
+    button6.grid(row=5, column=2, padx=25)
+    button7 = Button(root, text="7", command=lambda: numClick(7), bg="#fff", border=0, width=3, height=2)
+    button7.grid(row=4, column=0, padx=25)
+    button8 = Button(root, text="8", command=lambda: numClick(8), bg="#fff", border=0, width=3, height=2)
+    button8.grid(row=4, column=1, padx=25)
+    button9 = Button(root, text="9", command=lambda: numClick(9), bg="#fff", border=0, width=3, height=2)
+    button9.grid(row=4, column=2, padx=25)
+    button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0, width=3, height=2)
+    button0.grid(row=7, column=1, padx=25)
     # the value of the button clicked is passed onto a single function as argument
 
 
@@ -159,7 +222,11 @@ def equals():
 
 
 def errormsg(message):
+    def close(event):
+        error.destroy()
     error = Tk()
+    error.bind("<KP_Enter>",close)
+    error.bind("Return",close)
     error.geometry("200x80")
     error.title("Error")
     error.configure(bg="#fff")

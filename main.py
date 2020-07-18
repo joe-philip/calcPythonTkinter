@@ -2,26 +2,8 @@ from tkinter import *
 
 
 def listener(event):
-    if event.char == "1":
-        numClick(1)
-    elif event.char == "2":
-        numClick(2)
-    elif event.char == "3":
-        numClick(3)
-    elif event.char == "4":
-        numClick(4)
-    elif event.char == "5":
-        numClick(5)
-    elif event.char == "6":
-        numClick(6)
-    elif event.char == "7":
-        numClick(7)
-    elif event.char == "8":
-        numClick(8)
-    elif event.char == "9":
-        numClick(9)
-    elif event.char == "0":
-        numClick(0)
+    if "0123456789".find(event.char) != -1:
+        numClick(int(event.char))
     elif event.char == ".":
         otherFunctions(3)
     elif event.char == "+":

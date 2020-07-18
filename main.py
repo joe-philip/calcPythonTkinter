@@ -7,7 +7,7 @@ def defineRoot():
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
     root.title(appTitle)
-    photo = PhotoImage(file="Icons/1.png")
+    photo = PhotoImage(file="Icons/2.png")
     root.iconphoto(False, photo)
     windowPosition(root)
 

@@ -1,84 +1,54 @@
 from tkinter import *
 
 
-def defineRoot():
-    def listner(event):
-        if event.char == "1":
-            numClick(1)
-        elif event.char == "2":
-            numClick(2)
-        elif event.char == "3":
-            numClick(3)
-        elif event.char == "4":
-            numClick(4)
-        elif event.char == "5":
-            numClick(5)
-        elif event.char == "6":
-            numClick(6)
-        elif event.char == "7":
-            numClick(7)
-        elif event.char == "8":
-            numClick(8)
-        elif event.char == "9":
-            numClick(9)
-        elif event.char == "0":
-            numClick(0)
-        elif event.char == ".":
-            otherFunctions(3)
-        elif event.char == "+":
-            operator(0)
-        elif event.char == '-':
-            operator(1)
-        elif event.char == '*':
-            operator(3)
-        elif event.char == '/':
-            operator(2)
-        elif event.char == '\r':
-            equals()
-        elif event.char == '\x08':
-            otherFunctions(1)
-        elif event.char == '\x7f':
-            otherFunctions(2)
+def listner(event):
+    if event.char == "1":
+        numClick(1)
+    elif event.char == "2":
+        numClick(2)
+    elif event.char == "3":
+        numClick(3)
+    elif event.char == "4":
+        numClick(4)
+    elif event.char == "5":
+        numClick(5)
+    elif event.char == "6":
+        numClick(6)
+    elif event.char == "7":
+        numClick(7)
+    elif event.char == "8":
+        numClick(8)
+    elif event.char == "9":
+        numClick(9)
+    elif event.char == "0":
+        numClick(0)
+    elif event.char == ".":
+        otherFunctions(3)
+    elif event.char == "+":
+        operator(0)
+    elif event.char == '-':
+        operator(1)
+    elif event.char == '*':
+        operator(3)
+    elif event.char == '/':
+        operator(2)
+    elif event.char == '\r':
+        equals()
+    elif event.char == '\x08':
+        otherFunctions(1)
+    elif event.char == '\x7f':
+        otherFunctions(2)
+    elif event.char == '\x1b':
+        root.destroy()
 
+
+def defineRoot():
     root.geometry("400x360")
     root.configure(padx=25, pady=25)
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
     root.title(appTitle)
-    root.bind("<KP_1>", listner)
-    root.bind("1", listner)
-    root.bind("<KP_2>", listner)
-    root.bind("2", listner)
-    root.bind("<KP_3>", listner)
-    root.bind("3", listner)
-    root.bind("<KP_4>", listner)
-    root.bind("4", listner)
-    root.bind("<KP_5>", listner)
-    root.bind("5", listner)
-    root.bind("<KP_6>", listner)
-    root.bind("6", listner)
-    root.bind("<KP_7>", listner)
-    root.bind("7", listner)
-    root.bind("<KP_8>", listner)
-    root.bind("8", listner)
-    root.bind("<KP_9>", listner)
-    root.bind("9", listner)
-    root.bind("<KP_0>", listner)
-    root.bind("0", listner)
-    root.bind("<KP_Decimal>", listner)
-    root.bind("<period>", listner)
-    root.bind("<KP_Add>", listner)
-    root.bind("<plus>", listner)
-    root.bind("<KP_Subtract>", listner)
-    root.bind("<minus>", listner)
-    root.bind("<KP_Multiply>", listner)
-    root.bind("<asterisk>", listner)
-    root.bind("<KP_Divide>", listner)
-    root.bind("<slash>", listner)
-    root.bind("<KP_Enter>", listner)
-    root.bind("<Return>", listner)
-    root.bind("<Delete>", listner)
-    root.bind("<BackSpace>", listner)
+    root.bind("<KeyPress>", listner)  # listens to keypress
 
     photo = PhotoImage(file="Icons/2.png")
     root.iconphoto(False, photo)
@@ -224,9 +194,10 @@ def equals():
 def errormsg(message):
     def close(event):
         error.destroy()
+
     error = Tk()
-    error.bind("<KP_Enter>",close)
-    error.bind("Return",close)
+    error.bind("<KeyPress>", close)
+    error.bind("Return", close)
     error.geometry("200x80")
     error.title("Error")
     error.configure(bg="#fff")

@@ -6,14 +6,8 @@ def listener(event):
         numClick(int(event.char))
     elif event.char == ".":
         otherFunctions(3)
-    elif event.char == "+":
-        operator(0)
-    elif event.char == '-':
-        operator(1)
-    elif event.char == '*':
-        operator(3)
-    elif event.char == '/':
-        operator(2)
+    elif "+-/*".find(event.char) != -1:
+        operator(int("+-/*".find(event.char)))
     elif event.char == '\r':
         equals()
     elif event.char == '\x08':

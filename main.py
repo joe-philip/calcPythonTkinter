@@ -128,7 +128,7 @@ def operator(op):
         elif op == 1:
             operatorDisplay.set("-")
         elif op == 2:
-            operatorDisplay.set("/")
+            operatorDisplay.set(chr(247))
         elif op == 3:
             operatorDisplay.set("x")
 
@@ -162,12 +162,13 @@ def errormsg(message):
         error.destroy()
 
     error = Tk()
+    error.geometry("200x80")
     error.title("Error")
     error.configure(bg="#fff")
     error.resizable(False, False)
     windowPosition(error)
     errorLabel = Label(error, text=message, bg="#fff")
-    errorLabel.pack()
+    errorLabel.pack(pady=10)
     okButton = Button(error, text="OK", command=exit, bg="#007aff", fg="#fff", border=0)
     okButton.pack()
     error.mainloop()

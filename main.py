@@ -80,7 +80,7 @@ def createAndAllignOperatorButtons():
                                                                                                                   pady=2)
     buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2).grid(
         row=5, column=3, pady=2)
-    buttonDivide = Button(root, text="/", command=lambda: operator(2), bg="#fff", border=0, width=3, height=2).grid(
+    buttonDivide = Button(root, text=chr(247), command=lambda: operator(2), bg="#fff", border=0, width=3, height=2).grid(
         row=4, column=3, pady=2)
     buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2).grid(
         row=7, column=3, pady=2)

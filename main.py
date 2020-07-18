@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-def listner(event):
+def listener(event):
     if event.char == "1":
         numClick(1)
     elif event.char == "2":
@@ -43,12 +43,12 @@ def listner(event):
 
 
 def defineRoot():
-    root.geometry("400x360")
+    root.geometry("400x400")
     root.configure(padx=25, pady=25)
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
     root.title(appTitle)
-    root.bind("<KeyPress>", listner)  # listens to keypress
+    root.bind("<KeyPress>", listener)  # listens to keypress
 
     photo = PhotoImage(file="Icons/2.png")
     root.iconphoto(False, photo)
@@ -237,8 +237,20 @@ def otherFunctions(choice):
                 labelText.set((labelText.get()) + ".")
         else:
             errormsg("Invalid choice")
+def menu():
+    clearLabel =Label(root,text="Clear ->>",bg="#fff")
+    clearLabel.grid(row=9,column=0,padx=2,pady=2)
+    backspace=Label(root,text="Backspace",bg="#fff")
+    backspace.grid(row=9,column=1,padx=2,pady=2)
+    deleteAllLabel=Label(root,text="Delete All ->>",bg="#fff")
+    deleteAllLabel.grid(row=10,column=0,padx=2,pady=2)
+    deleteLabel=Label(root,text="Delete",bg="#fff")
+    deleteLabel.grid(row=10,column=1,padx=2,pady=2)
+    clearLabel.configure(anchor=E)
+    backspace.configure(anchor=E)
+    deleteAllLabel.configure(anchor=E)
+    deleteLabel.configure(anchor=E)
 
-    return
 
 
 # <<<===Initializations===>>>
@@ -253,4 +265,5 @@ defineOperatorLabel()
 createAndAllignNumButtons()
 createAndAllignOperatorButtons()
 createAndAllignFunctionButtons()
+menu()
 root.mainloop()

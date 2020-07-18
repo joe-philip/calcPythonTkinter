@@ -62,8 +62,8 @@ def defineNumberLabel():
     numberLabel = Label(root, textvariable=labelText, bg="#fff", font=('Helvetica', 14))
     numberLabel.configure(anchor=W, pady=25)
     labelText.set(welcomeText)
-    numberLabel.grid(row=0, column=0, columnspan=3, rowspan=3,
-                     sticky=W)  # the sticky attribute sets the text to the left side of label
+    numberLabel.grid(row=0, column=0, columnspan=3, rowspan=3, sticky=W)
+    # the sticky attribute sets the text to the left side of label
 
 
 def defineOperatorLabel():
@@ -108,16 +108,14 @@ def createAndAllignNumButtons():
 
 
 def createAndAllignOperatorButtons():
-    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0, width=3, height=2).grid(row=6,
-                                                                                                                  column=3,
-                                                                                                                  pady=2)
-    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2).grid(
-        row=5, column=3, pady=2)
-    buttonDivide = Button(root, text=chr(247), command=lambda: operator(2), bg="#fff", border=0, width=3,
-                          height=2).grid(
-        row=4, column=3, pady=2)
-    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2).grid(
-        row=7, column=3, pady=2)
+    buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0, width=3, height=2)
+    buttonPlus.grid(row=6, column=3, pady=2)
+    buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2)
+    buttonMinus.grid(row=5, column=3, pady=2)
+    buttonDivide = Button(root, text=chr(247), command=lambda: operator(2), bg="#fff", border=0, width=3, height=2)
+    buttonDivide.grid(row=4, column=3, pady=2)
+    buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2)
+    buttonMultiply.grid(row=7, column=3, pady=2)
 
 
 def createAndAllignFunctionButtons():
@@ -241,17 +239,13 @@ def otherFunctions(choice):
 
 def menu():
     clearLabel = Label(root, text="Clear ->>", bg="#fff")
-    clearLabel.grid(row=9, column=0, padx=2, pady=2)
+    clearLabel.grid(row=9, column=0, padx=2, pady=2, sticky=E)
     backspace = Label(root, text="Backspace", bg="#fff")
-    backspace.grid(row=9, column=1, padx=2, pady=2)
+    backspace.grid(row=9, column=1, padx=2, pady=2, sticky=W)
     deleteAllLabel = Label(root, text="Delete All ->>", bg="#fff")
-    deleteAllLabel.grid(row=10, column=0, padx=2, pady=2)
+    deleteAllLabel.grid(row=10, column=0, padx=2, pady=2, sticky=E)
     deleteLabel = Label(root, text="Delete", bg="#fff")
-    deleteLabel.grid(row=10, column=1, padx=2, pady=2)
-    clearLabel.configure(anchor=E)
-    backspace.configure(anchor=E)
-    deleteAllLabel.configure(anchor=E)
-    deleteLabel.configure(anchor=E)
+    deleteLabel.grid(row=10, column=1, padx=2, pady=2, sticky=W)
 
 
 # <<<===Initializations===>>>

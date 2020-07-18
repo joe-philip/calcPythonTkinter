@@ -121,13 +121,15 @@ def createAndAllignOperatorButtons():
 
 
 def createAndAllignFunctionButtons():
-    clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0, width=3,
-                         height=2).grid(row=8, column=0)
-    equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2).grid(row=7, column=2)
+    clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0, width=3, height=2)
+    clearButton.grid(row=8, column=0)
+    equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2)
+    equalsButton.grid(row=7, column=2)
     clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0, width=5,
-                            height=2).grid(row=8, column=1, pady=2)
-    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0, width=3, height=2).grid(
-        row=7, column=0, pady=2)
+                            height=2)
+    clearAllButton.grid(row=8, column=1, pady=2)
+    dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0, width=3, height=2)
+    dotButton.grid(row=7, column=0, pady=2)
 
 
 def numClick(n):
@@ -213,8 +215,10 @@ def errormsg(message):
 
 def otherFunctions(choice):
     if choice == 1:  # delete button
-        if len(labelText.get()) > 0 and labelText.get() != welcomeText:
+        if len(labelText.get()) > 1 and labelText.get() != welcomeText:
             labelText.set(labelText.get()[:-1])
+        elif len(labelText.get()) == 1:
+            labelText.set("0")
         else:
             errormsg("Nothing to delete")
     elif choice == 2:  # clear all
@@ -241,7 +245,7 @@ def otherFunctions(choice):
 welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
 isOperatorClicked = 0
-# <<<===main===>>>
+# <<<===Main===>>>
 root = Tk()
 defineRoot()
 defineNumberLabel()

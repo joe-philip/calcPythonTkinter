@@ -1,5 +1,9 @@
 from tkinter import *
 import table as tables
+<<<<<<< HEAD
+=======
+
+>>>>>>> 626e853fcf8e724cd2dba7f7c9d3df16976db6f7
 
 def listener(event):
     if "0123456789".find(event.char) != -1:
@@ -109,12 +113,21 @@ def createAndAllignButtons():
     clearButton.grid(row=8, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2)
     equalsButton.grid(row=7, column=2)
+<<<<<<< HEAD
     clearAllButton = Button(root, text="Clear\nAll", command=lambda: otherFunctions(2), bg="#fff", border=0, width=5,
+=======
+    clearAllButton = Button(root, text="Clear\nAll", command=lambda: otherFunctions(2), bg="#fff", border=0, width=3,
+>>>>>>> 626e853fcf8e724cd2dba7f7c9d3df16976db6f7
                             height=2)
     clearAllButton.grid(row=8, column=1, pady=2)
     dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0, width=3, height=2)
     dotButton.grid(row=7, column=0, pady=2)
+<<<<<<< HEAD
     tablesButton = Button(root, text="Tables", command=lambda: otherFunctions(4), bg="#fff", border=0, width=3,height=2)
+=======
+    tablesButton = Button(root, text="Tables", command=lambda: otherFunctions(4), bg="#fff", border=0, width=3,
+                          height=2)
+>>>>>>> 626e853fcf8e724cd2dba7f7c9d3df16976db6f7
     tablesButton.grid(row=8, column=2, pady=2)
 
 
@@ -185,7 +198,6 @@ def errormsg(message):
 
     error = Tk()
     error.bind("<KeyPress>", close)
-    error.bind("Return", close)
     error.geometry("200x80")
     error.title("Error")
     error.configure(bg="#fff")

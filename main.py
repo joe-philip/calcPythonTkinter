@@ -21,7 +21,7 @@ def listener(event):
 
 
 def defineRoot():
-    root.geometry("400x430")
+    root.geometry("400x470")
     root.configure(padx=25, pady=25)
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
@@ -61,6 +61,10 @@ def createAndDefineLabels():
     equalsLabel.grid(row=11, column=0, padx=2, pady=2, sticky=E)
     enterLabel = Label(root, text="Enter", bg="#fff")
     enterLabel.grid(row=11, column=1, padx=2, pady=2, sticky=W)
+    tablesLabel=Label(root,text="Multiplication-->\nTables",bg="#fff")
+    tablesLabel.grid(row=12, column=0, padx=2, pady=2, sticky=E)
+    mLabel=Label(root,text="m",bg="#fff")
+    mLabel.grid(row=12, column=1, padx=2, pady=2, sticky=W)
 
 
 def windowPosition(name):  # positions window to the center of the screen

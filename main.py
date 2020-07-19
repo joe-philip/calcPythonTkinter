@@ -1,4 +1,5 @@
 from tkinter import *
+import table as tables
 
 
 def listener(event):
@@ -16,6 +17,8 @@ def listener(event):
         otherFunctions(2)
     elif event.char == '\x1b':
         root.destroy()
+    elif event.char == 'm':
+        otherFunctions(4)
 
 
 def defineRoot():
@@ -71,6 +74,7 @@ def windowPosition(name):  # positions window to the center of the screen
 
 
 def createAndAllignButtons():
+    # <<<===Num Buttons===>>>
     button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0, width=3, height=2)
     button1.grid(row=6, column=0, padx=25)
     button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0, width=3, height=2)
@@ -106,11 +110,14 @@ def createAndAllignButtons():
     clearButton.grid(row=8, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2)
     equalsButton.grid(row=7, column=2)
-    clearAllButton = Button(root, text="Clear All", command=lambda: otherFunctions(2), bg="#fff", border=0, width=5,
+    clearAllButton = Button(root, text="Clear\nAll", command=lambda: otherFunctions(2), bg="#fff", border=0, width=3,
                             height=2)
     clearAllButton.grid(row=8, column=1, pady=2)
     dotButton = Button(root, text=".", command=lambda: otherFunctions(3), bg="#fff", border=0, width=3, height=2)
     dotButton.grid(row=7, column=0, pady=2)
+    tablesButton = Button(root, text="Tables", command=lambda: otherFunctions(4), bg="#fff", border=0, width=3,
+                          height=2)
+    tablesButton.grid(row=8, column=2, pady=2)
 
 
 def numClick(n):
@@ -180,7 +187,6 @@ def errormsg(message):
 
     error = Tk()
     error.bind("<KeyPress>", close)
-    error.bind("Return", close)
     error.geometry("200x80")
     error.title("Error")
     error.configure(bg="#fff")
@@ -218,6 +224,8 @@ def otherFunctions(choice):
                 labelText.set((labelText.get()) + ".")
         else:
             errormsg("Invalid choice")
+    elif choice == 4:  # Multiplication Table
+        tables.create()
 
 
 # <<<===Initializations===>>>

@@ -65,8 +65,4 @@ def windowPosition(name):  # positions window to the center of the screen
     height = name.winfo_height()
     x = (name.winfo_screenwidth() // 2) - (width // 2)
     y = (name.winfo_screenheight() // 2) - (height // 2)
-<<<<<<< HEAD
     name.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-=======
-    name.geometry('{}x{}+{}+{}'.format(width, height, x, y))
->>>>>>> 626e853fcf8e724cd2dba7f7c9d3df16976db6f7

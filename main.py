@@ -25,13 +25,13 @@ def defineRoot():
     root.configure(bg="#fff")
     root.title(appTitle)
     root.bind("<KeyPress>", listener)  # listens to keypress
-
-    photo = PhotoImage(file="Icons/1.png")
-    root.iconphoto(False, photo)
+    photo = PhotoImage(file="Icons/1.png")  # Defining Icon picture
+    root.iconphoto(False, photo)  # adding Icon
     windowPosition(root)
 
 
-def defineNumberLabel():
+def createAndDefineLabels():
+    # <<<===Number Label===>>>
     global labelText
     global numberLabel
     labelText = StringVar(root)
@@ -40,14 +40,25 @@ def defineNumberLabel():
     labelText.set(welcomeText)
     numberLabel.grid(row=0, column=0, columnspan=3, rowspan=3, sticky=W)
     # the sticky attribute sets the text to the left side of label
-
-
-def defineOperatorLabel():
+    # <<<===Operator===>>>
     global operatorDisplay
     operatorDisplay = StringVar(root)
     operatorLabel = Label(root, textvariable=operatorDisplay, bg="#fff", font=('Helvetica', 14))
     operatorLabel.configure(anchor=E)
     operatorLabel.grid(row=0, column=4, rowspan=3, sticky=E)
+    # <<<===Menu===>>>
+    clearLabel = Label(root, text="Clear -->", bg="#fff")
+    clearLabel.grid(row=9, column=0, padx=2, pady=2, sticky=E)
+    backspace = Label(root, text="Backspace", bg="#fff")
+    backspace.grid(row=9, column=1, padx=2, pady=2, sticky=W)
+    deleteAllLabel = Label(root, text="Delete All -->", bg="#fff")
+    deleteAllLabel.grid(row=10, column=0, padx=2, pady=2, sticky=E)
+    deleteLabel = Label(root, text="Delete", bg="#fff")
+    deleteLabel.grid(row=10, column=1, padx=2, pady=2, sticky=W)
+    equalsLabel = Label(root, text="Equals-->", bg="#fff")
+    equalsLabel.grid(row=11, column=0, padx=2, pady=2, sticky=E)
+    enterLabel = Label(root, text="Enter", bg="#fff")
+    enterLabel.grid(row=11, column=1, padx=2, pady=2, sticky=W)
 
 
 def windowPosition(name):  # positions window to the center of the screen
@@ -59,7 +70,7 @@ def windowPosition(name):  # positions window to the center of the screen
     name.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
 
-def createAndAllignNumButtons():
+def createAndAllignButtons():
     button1 = Button(root, text="1", command=lambda: numClick(1), bg="#fff", border=0, width=3, height=2)
     button1.grid(row=6, column=0, padx=25)
     button2 = Button(root, text="2", command=lambda: numClick(2), bg="#fff", border=0, width=3, height=2)
@@ -81,9 +92,7 @@ def createAndAllignNumButtons():
     button0 = Button(root, text="0", command=lambda: numClick(0), bg="#fff", border=0, width=3, height=2)
     button0.grid(row=7, column=1, padx=25)
     # the value of the button clicked is passed onto a single function as argument
-
-
-def createAndAllignOperatorButtons():
+    # <<<===Operators===>>>
     buttonPlus = Button(root, text="+", command=lambda: operator(0), bg="#fff", border=0, width=3, height=2)
     buttonPlus.grid(row=6, column=3, pady=2)
     buttonMinus = Button(root, text="-", command=lambda: operator(1), bg="#fff", border=0, width=3, height=2)
@@ -92,9 +101,7 @@ def createAndAllignOperatorButtons():
     buttonDivide.grid(row=4, column=3, pady=2)
     buttonMultiply = Button(root, text="x", command=lambda: operator(3), bg="#fff", border=0, width=3, height=2)
     buttonMultiply.grid(row=7, column=3, pady=2)
-
-
-def createAndAllignFunctionButtons():
+    # <<<===Other Functions===>>>
     clearButton = Button(root, text="C", command=lambda: otherFunctions(1), bg="#fff", border=0, width=3, height=2)
     clearButton.grid(row=8, column=0)
     equalsButton = Button(root, text="=", command=equals, bg="#fff", border=0, width=3, height=2)
@@ -213,21 +220,6 @@ def otherFunctions(choice):
             errormsg("Invalid choice")
 
 
-def menu():
-    clearLabel = Label(root, text="Clear -->", bg="#fff")
-    clearLabel.grid(row=9, column=0, padx=2, pady=2, sticky=E)
-    backspace = Label(root, text="Backspace", bg="#fff")
-    backspace.grid(row=9, column=1, padx=2, pady=2, sticky=W)
-    deleteAllLabel = Label(root, text="Delete All -->", bg="#fff")
-    deleteAllLabel.grid(row=10, column=0, padx=2, pady=2, sticky=E)
-    deleteLabel = Label(root, text="Delete", bg="#fff")
-    deleteLabel.grid(row=10, column=1, padx=2, pady=2, sticky=W)
-    equalsLabel=Label(root,text="Equals-->",bg="#fff")
-    equalsLabel.grid(row=11,column=0,padx=2,pady=2,sticky=E)
-    enterLabel=Label(root,text="Enter",bg="#fff")
-    enterLabel.grid(row=11,column=1,padx=2,pady=2,sticky=W)
-
-
 # <<<===Initializations===>>>
 welcomeText = "Welcome to the calculator app"
 appTitle = "Calculator"
@@ -235,10 +227,6 @@ isOperatorClicked = 0
 # <<<===Main===>>>
 root = Tk()
 defineRoot()
-defineNumberLabel()
-defineOperatorLabel()
-createAndAllignNumButtons()
-createAndAllignOperatorButtons()
-createAndAllignFunctionButtons()
-menu()
+createAndDefineLabels()
+createAndAllignButtons()
 root.mainloop()

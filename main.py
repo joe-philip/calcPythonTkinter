@@ -19,7 +19,7 @@ def listener(event):
 
 
 def defineRoot():
-    root.geometry("400x400")
+    root.geometry("400x430")
     root.configure(padx=25, pady=25)
     root.resizable(False, False)  # disables resizing of window
     root.configure(bg="#fff")
@@ -214,14 +214,18 @@ def otherFunctions(choice):
 
 
 def menu():
-    clearLabel = Label(root, text="Clear ->>", bg="#fff")
+    clearLabel = Label(root, text="Clear -->", bg="#fff")
     clearLabel.grid(row=9, column=0, padx=2, pady=2, sticky=E)
     backspace = Label(root, text="Backspace", bg="#fff")
     backspace.grid(row=9, column=1, padx=2, pady=2, sticky=W)
-    deleteAllLabel = Label(root, text="Delete All ->>", bg="#fff")
+    deleteAllLabel = Label(root, text="Delete All -->", bg="#fff")
     deleteAllLabel.grid(row=10, column=0, padx=2, pady=2, sticky=E)
     deleteLabel = Label(root, text="Delete", bg="#fff")
     deleteLabel.grid(row=10, column=1, padx=2, pady=2, sticky=W)
+    equalsLabel=Label(root,text="Equals-->",bg="#fff")
+    equalsLabel.grid(row=11,column=0,padx=2,pady=2,sticky=E)
+    enterLabel=Label(root,text="Enter",bg="#fff")
+    enterLabel.grid(row=11,column=1,padx=2,pady=2,sticky=W)
 
 
 # <<<===Initializations===>>>
